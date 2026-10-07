@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 5: Klasifikasi & Pemilihan Elektroda SMAW</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom Config for Luxury Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        luxury: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            accent: '#c5a028'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #c5a028 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.15);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: white !important; color: black !important; }
+            .print-border { border: 1px solid #000 !important; }
+            .text-slate-400, .text-slate-300 { color: #333 !important; }
+            .text-white { color: #000 !important; }
+            .bg-luxury-800\/40 { background-color: #f3f4f6 !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-900 text-slate-200 font-sans antialiased selection:bg-luxury-gold selection:text-luxury-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-900/90 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="4.html" class="flex items-center gap-3 group">
+                    <svg class="w-6 h-6 text-luxury-gold group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <span class="font-serif text-lg font-semibold text-white">Kembali ke <span class="text-luxury-gold">Pertemuan 4</span></span>
+                </a>
+                <div class="flex gap-4">
+                    <a href="index.html#kurikulum" class="text-sm font-medium text-slate-300 hover:text-luxury-gold transition-colors">Daftar Bab</a>
+                    <a href="6.html" class="text-sm font-medium text-luxury-gold hover:text-luxury-goldLight transition-colors flex items-center gap-1">
+                        Bab Selanjutnya <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 border-b border-luxury-gold/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-luxury-gold/10 border border-luxury-gold/30 text-luxury-gold text-sm font-semibold tracking-wider mb-4">PERTEMUAN 5</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+                Klasifikasi & Pemilihan <br><span class="gold-gradient-text">Elektroda SMAW</span>
+            </h1>
+            <p class="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                Memahami sistem penamaan elektroda menurut standar AWS, jenis-jenis salutan (coating), karakteristik setiap tipe elektroda (E6010, E6013, E7018, dll), serta prinsip pemilihan elektroda yang tepat berdasarkan material, posisi, dan aplikasi pengelasan.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- Pendahuluan -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">01</span>
+                Pendahuluan
+            </h2>
+            <p class="text-slate-300 leading-relaxed text-justify">
+                Elektroda adalah "jantung" dari proses pengelasan SMAW. Pemilihan elektroda yang tepat bukan hanya mempengaruhi kualitas lasan, tetapi juga menentukan keberhasilan penyambungan material secara metalurgis. Kesalahan dalam memilih elektroda dapat berakibat fatal—mulai dari cacat las, retak dingin, hingga kegagalan struktur secara total.
+            </p>
+            <p class="text-slate-300 leading-relaxed text-justify">
+                Modul pengelasan SMAW menegaskan bahwa pemilihan elektroda harus mempertimbangkan <strong>jenis material yang dilas, tebal material, posisi pengelasan, dan kondisi kerja</strong>. Oleh karena itu, setiap siswa dan juru las wajib menguasai sistem klasifikasi elektroda menurut standar <strong>AWS (American Welding Society)</strong> serta memahami karakteristik setiap tipe elektroda yang ada di pasaran.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-800/40 border border-luxury-gold/20 rounded-2xl p-8 hover-lift">
+            <h2 class="font-serif text-2xl font-bold text-luxury-gold mb-6 flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                🔑 Konsep Kunci Klasifikasi Elektroda
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <h3 class="text-white font-semibold">AWS Classification</h3>
+                    <p class="text-sm text-slate-400">Sistem penamaan standar Amerika yang digunakan secara internasional untuk mengidentifikasi karakteristik elektroda SMAW.</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-white font-semibold">Tensile Strength</h3>
+                    <p class="text-sm text-slate-400">Kekuatan tarik minimum logam las dalam satuan ksi (kilo pound per square inch). Contoh: "60" pada E6013 = 60.000 psi.</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-white font-semibold">Coating (Salutan)</h3>
+                    <p class="text-sm text-slate-400">Lapisan fluks pada elektroda yang berfungsi menghasilkan gas pelindung, terak, dan menstabilkan busur las.</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-white font-semibold">Low Hydrogen</h3>
+                    <p class="text-sm text-slate-400">Elektroda dengan kandungan hidrogen sangat rendah, dirancang untuk mencegah retak dingin pada baja karbon tinggi dan baja paduan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sistem Penamaan AWS -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">02</span>
+                Sistem Penamaan Elektroda AWS
+            </h2>
+            <div class="bg-luxury-800/40 border border-luxury-gold/20 rounded-2xl p-8">
+                <p class="text-slate-300 leading-relaxed mb-6">
+                    Standar AWS A5.1 menggunakan sistem penamaan <strong>EXXXX</strong> untuk elektroda baja karbon dan baja karbon-mangan. Setiap karakter memiliki arti spesifik:
+                </p>
+                <div class="grid md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-luxury-900 p-4 rounded-lg border border-luxury-gold/30 text-center">
+                        <p class="text-luxury-gold font-mono text-3xl font-bold">E</p>
+                        <p class="text-slate-400 text-xs mt-2">Electrode</p>
+                    </div>
+                    <div class="bg-luxury-900 p-4 rounded-lg border border-luxury-gold/30 text-center">
+                        <p class="text-luxury-gold font-mono text-3xl font-bold">60</p>
+                        <p class="text-slate-400 text-xs mt-2">Tensile Strength (60 ksi)</p>
+                    </div>
+                    <div class="bg-luxury-900 p-4 rounded-lg border border-luxury-gold/30 text-center">
+                        <p class="text-luxury-gold font-mono text-3xl font-bold">1</p>
+                        <p class="text-slate-400 text-xs mt-2">Posisi Pengelasan</p>
+                    </div>
+                    <div class="bg-luxury-900 p-4 rounded-lg border border-luxury-gold/30 text-center">
+                        <p class="text-luxury-gold font-mono text-3xl font-bold">3</p>
+                        <p class="text-slate-400 text-xs mt-2">Jenis Salutan & Arus</p>
+                    </div>
+                </div>
+
+                <h4 class="text-white font-semibold mb-3">Detail Arti Setiap Digit:</h4>
+                <div class="space-y-3 text-slate-300 text-sm">
+                    <div class="flex gap-3">
+                        <span class="text-luxury-gold font-bold">▸</span>
+                        <div><strong>Huruf "E":</strong> Menandakan produk ini adalah elektroda untuk pengelasan busur listrik.</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="text-luxury-gold font-bold">▸</span>
+                        <div><strong>Dua digit pertama (60, 70, 80, dst):</strong> Kekuatan tarik minimum logam las dalam satuan ksi. Contoh: E6013 = 60.000 psi, E7018 = 70.000 psi.</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="text-luxury-gold font-bold">▸</span>
+                        <div><strong>Digit ketiga (1 atau 2):</strong> Posisi pengelasan. "1" = semua posisi (1F, 2F, 3F, 4F), "2" = hanya posisi datar dan horizontal.</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="text-luxury-gold font-bold">▸</span>
+                        <div><strong>Digit keempat (0-8):</strong> Jenis salutan (coating) dan jenis arus yang sesuai (AC, DCEN, DCEP).</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jenis-Jenis Elektroda -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">03</span>
+                Jenis-Jenis Elektroda SMAW yang Umum
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-luxury-800/40 p-6 rounded-xl border border-slate-700 hover:border-luxury-gold/50 transition-colors">
+                    <h3 class="text-luxury-gold font-semibold text-lg mb-3">E6010 (Cellulose Sodium)</h3>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>▸ Penetrasi sangat dalam (digging arc)</li>
+                        <li>▸ Arus: DCEP saja</li>
+                        <li>▸ Semua posisi</li>
+                        <li>▸ Aplikasi: Pipa, root pass, struktur berat</li>
+                        <li>▸ Busur kuat, terak tipis</li>
+                    </ul>
+                </div>
+                <div class="bg-luxury-800/40 p-6 rounded-xl border border-slate-700 hover:border-luxury-gold/50 transition-colors">
+                    <h3 class="text-luxury-gold font-semibold text-lg mb-3">E6011 (Cellulose Potassium)</h3>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>▸ Mirip E6010, tapi bisa AC</li>
+                        <li>▸ Arus: AC, DCEP</li>
+                        <li>▸ Semua posisi</li>
+                        <li>▸ Aplikasi: Perbaikan, las di lapangan</li>
+                        <li>▸ Toleran terhadap karat/cat</li>
+                    </ul>
+                </div>
+                <div class="bg-luxury-800/40 p-6 rounded-xl border border-luxury-gold/30 hover:border-luxury-gold transition-colors">
+                    <h3 class="text-luxury-gold font-semibold text-lg mb-3">E6012 (Rutile Sodium) ⭐</h3>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>▸ Penetrasi sedang, busur stabil</li>
+                        <li>▸ Arus: AC, DCEN</li>
+                        <li>▸ Semua posisi</li>
+                        <li>▸ Aplikasi: Konstruksi umum, fabrikasi ringan</li>
+                        <li>▸ Mudah dioperasikan pemula</li>
+                    </ul>
+                </div>
+                <div class="bg-luxury-800/40 p-6 rounded-xl border border-luxury-gold/30 hover:border-luxury-gold transition-colors">
+                    <h3 class="text-luxury-gold font-semibold text-lg mb-3">E6013 (Rutile Potassium) ⭐⭐</h3>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>▸ <strong>Paling populer untuk pemula</strong></li>
+                        <li>▸ Arus: AC, DCEN, DCEP</li>
+                        <li>▸ Semua posisi</li>
+                        <li>▸ Aplikasi: Konstruksi umum, fabrikasi</li>
+                        <li>▸ Busur sangat stabil, percikan minimal</li>
+                    </ul>
+                </div>
+                <div class="bg-luxury-800/40 p-6 rounded-xl border border-slate-700 hover:border-luxury-gold/50 transition-colors">
+                    <h3 class="text-luxury-gold font-semibold text-lg mb-3">E7016 (Low Hydrogen Potassium)</h3>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>▸ Low hydrogen, tahan retak</li>
+                        <li>▸ Arus: AC, DCEP</li>
+                        <li>▸ Semua posisi</li>
+                        <li>▸ Aplikasi: Baja paduan, struktur kritis</li>
+                        <li>▸ Wajib disimpan di oven (100-150°C)</li>
+                    </ul>
+                </div>
+                <div class="bg-luxury-800/40 p-6 rounded-xl border border-slate-700 hover:border-luxury-gold/50 transition-colors">
+                    <h3 class="text-luxury-gold font-semibold text-lg mb-3">E7018 (Low Hydrogen Iron) ⭐⭐⭐</h3>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>▸ <strong>Standar industri untuk baja paduan</strong></li>
+                        <li>▸ Arus: AC, DCEP</li>
+                        <li>▸ Semua posisi</li>
+                        <li>▸ Aplikasi: Struktur berat, pressure vessel</li>
+                        <li>▸ Hasil las tangguh, bebas retak</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jenis Salutan -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">04</span>
+                Jenis-Jenis Salutan (Coating) Elektroda
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-luxury-800/40 p-5 rounded-xl border border-slate-700 hover:border-luxury-gold/50 transition-colors">
+                    <h3 class="text-luxury-gold font-semibold mb-2">Rutile (TiO₂)</h3>
+                    <p class="text-sm text-slate-400">Busur stabil, mudah dinyalakan, terak mudah dilepas. Cocok untuk pemula dan konstruksi umum. Contoh: E6012, E6013.</p>
+                </div>
+                <div class="bg-luxury-800/40 p-5 rounded-xl border border-slate-700 hover:border-luxury-gold/50 transition-colors">
+                    <h3 class="text-luxury-gold font-semibold mb-2">Cellulose</h3>
+                    <p class="text-sm text-slate-400">Menghasilkan gas pelindung banyak, penetrasi dalam. Cocok untuk root pass pipa. Contoh: E6010, E6011.</p>
+                </div>
+                <div class="bg-luxury-800/40 p-5 rounded-xl border border-slate-700 hover:border-luxury-gold/50 transition-colors">
+                    <h3 class="text-luxury-gold font-semibold mb-2">Basic / Low Hydrogen</h3>
+                    <p class="text-sm text-slate-400">Kandungan hidrogen sangat rendah, mencegah retak dingin. Wajib untuk baja paduan tinggi. Contoh: E7016, E7018.</p>
+                </div>
+                <div class="bg-luxury-800/40 p-5 rounded-xl border border-slate-700 hover:border-luxury-gold/50 transition-colors">
+                    <h3 class="text-luxury-gold font-semibold mb-2">Iron Powder</h3>
+                    <p class="text-sm text-slate-400">Mengandung serbuk besi, meningkatkan laju deposisi. Efisien untuk las tebal dan pengisian cepat. Contoh: E7024, E7028.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pemilihan Elektroda -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">05</span>
+                Prinsip Pemilihan Elektroda
+            </h2>
+            <div class="space-y-4">
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 flex items-center justify-center text-luxury-gold font-bold">1</div>
+                    <div>
+                        <h3 class="text-white font-semibold">Jenis Material yang Dilas</h3>
+                        <p class="text-slate-400 text-sm">Baja karbon rendah (CE &lt; 0,35%) → E6013 cukup. Baja karbon menengah/tinggi → E7018 (low hydrogen). Stainless steel → E308L, E309L.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 flex items-center justify-center text-luxury-gold font-bold">2</div>
+                    <div>
+                        <h3 class="text-white font-semibold">Tebal Material</h3>
+                        <p class="text-slate-400 text-sm">Pelat tipis (&lt;3mm) → elektroda kecil (Ø2,0-2,6mm). Pelat tebal (&gt;6mm) → elektroda besar (Ø3,2-4,0mm) untuk efisiensi deposisi.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 flex items-center justify-center text-luxury-gold font-bold">3</div>
+                    <div>
+                        <h3 class="text-white font-semibold">Posisi Pengelasan</h3>
+                        <p class="text-slate-400 text-sm">Posisi 3F/4F (vertikal/overhead) → wajib digit ketiga "1" (semua posisi). Posisi 1F/2F → bisa gunakan digit "2" (datar/horizontal saja).</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 flex items-center justify-center text-luxury-gold font-bold">4</div>
+                    <div>
+                        <h3 class="text-white font-semibold">Kondisi Kerja & Spesifikasi</h3>
+                        <p class="text-slate-400 text-sm">Struktur kritis (jembatan, pressure vessel) → wajib low hydrogen (E7018). Las di lapangan (berangin, lembap) → E6011 lebih toleran.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diameter & Arus -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">06</span>
+                Diameter Elektroda & Arus yang Sesuai
+            </h2>
+            <div class="bg-luxury-800/40 border border-luxury-gold/20 rounded-2xl p-6 overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-luxury-gold/30">
+                            <th class="text-left py-3 px-4 text-luxury-gold font-semibold">Diameter Elektroda</th>
+                            <th class="text-left py-3 px-4 text-luxury-gold font-semibold">Arus (Ampere)</th>
+                            <th class="text-left py-3 px-4 text-luxury-gold font-semibold">Ketebalan Plat Minimal</th>
+                            <th class="text-left py-3 px-4 text-luxury-gold font-semibold">Aplikasi Umum</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-300">
+                        <tr class="border-b border-slate-700/50">
+                            <td class="py-3 px-4">Ø 1,6 mm</td>
+                            <td class="py-3 px-4">25 - 45 A</td>
+                            <td class="py-3 px-4">1,6 mm</td>
+                            <td class="py-3 px-4">Pelat sangat tipis, pekerjaan presisi</td>
+                        </tr>
+                        <tr class="border-b border-slate-700/50">
+                            <td class="py-3 px-4">Ø 2,0 mm</td>
+                            <td class="py-3 px-4">40 - 65 A</td>
+                            <td class="py-3 px-4">2,0 mm</td>
+                            <td class="py-3 px-4">Root pass, plat tipis</td>
+                        </tr>
+                        <tr class="border-b border-slate-700/50 bg-luxury-gold/5">
+                            <td class="py-3 px-4 font-semibold text-white">Ø 2,6 mm</td>
+                            <td class="py-3 px-4 font-semibold text-white">70 - 90 A</td>
+                            <td class="py-3 px-4">3,0 mm</td>
+                            <td class="py-3 px-4 font-semibold text-white">Pelat 3-6 mm, posisi 3F</td>
+                        </tr>
+                        <tr class="border-b border-slate-700/50 bg-luxury-gold/5">
+                            <td class="py-3 px-4 font-semibold text-white">Ø 3,2 mm</td>
+                            <td class="py-3 px-4 font-semibold text-white">90 - 130 A</td>
+                            <td class="py-3 px-4">4,0 mm</td>
+                            <td class="py-3 px-4 font-semibold text-white">Paling umum, pelat 6-10 mm</td>
+                        </tr>
+                        <tr class="border-b border-slate-700/50">
+                            <td class="py-3 px-4">Ø 4,0 mm</td>
+                            <td class="py-3 px-4">140 - 180 A</td>
+                            <td class="py-3 px-4">6,0 mm</td>
+                            <td class="py-3 px-4">Fill & cap pass, pelat tebal</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4">Ø 5,0 mm</td>
+                            <td class="py-3 px-4">180 - 250 A</td>
+                            <td class="py-3 px-4">8,0 mm</td>
+                            <td class="py-3 px-4">Posisi datar, pelat sangat tebal</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-xs text-slate-500 mt-4 italic">*Nilai arus dapat bervariasi tergantung jenis elektroda dan merek. Selalu rujuk kemasan pabrik.</p>
+            </div>
+        </section>
+
+        <!-- Penyimpanan -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">07</span>
+                Penyimpanan & Penanganan Elektroda
+            </h2>
+            <div class="bg-red-900/10 border border-red-500/20 rounded-2xl p-6">
+                <h3 class="text-red-400 font-semibold mb-3">⚠️ Elektroda Low Hydrogen (E7016, E7018) WAJIB:</h3>
+                <ul class="space-y-2 text-slate-300 text-sm">
+                    <li class="flex gap-2"><span class="text-red-400">▸</span> Disimpan dalam <strong>oven elektroda</strong> pada suhu 100-150°C secara terus-menerus.</li>
+                    <li class="flex gap-2"><span class="text-red-400">▸</span> Sebelum digunakan, dilakukan <strong>baking</strong> pada suhu 300-350°C selama 1-2 jam.</li>
+                    <li class="flex gap-2"><span class="text-red-400">▸</span> Tidak boleh terpapar udara lembap lebih dari 4 jam.</li>
+                    <li class="flex gap-2"><span class="text-red-400">▸</span> Elektroda yang sudah basah harus di-<em>recondition</em> atau dibuang.</li>
+                </ul>
+            </div>
+            <div class="bg-luxury-800/40 border border-slate-700 rounded-2xl p-6 mt-4">
+                <h3 class="text-luxury-gold font-semibold mb-3">Elektroda Rutile (E6013) dan Cellulose:</h3>
+                <ul class="space-y-2 text-slate-300 text-sm">
+                    <li class="flex gap-2"><span class="text-luxury-gold">▸</span> Disimpan di tempat kering, suhu ruang, tidak lembap.</li>
+                    <li class="flex gap-2"><span class="text-luxury-gold">▸</span> Kemasan tertutup rapat setelah dibuka.</li>
+                    <li class="flex gap-2"><span class="text-luxury-gold">▸</span> Tidak memerlukan oven, tapi hindari kontak dengan air.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-red-900/10 border border-red-500/20 rounded-2xl p-8">
+            <h2 class="font-serif text-xl font-bold text-red-400 mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                📖 Studi Kasus: Retak Akibat Elektroda Basah
+            </h2>
+            <p class="text-slate-300 leading-relaxed mb-4">
+                Di sebuah proyek jembatan, juru las menggunakan elektroda E7018 yang telah terbuka kemasannya selama 3 hari di lingkungan lembap. Ia tidak melakukan baking ulang sebelum mengelas. Semalam setelah pengelasan, muncul retak-retak halus pada HAZ yang menjalar sepanjang lasan. Hasil uji radiografi menunjukkan cacat retak hidrogen (hydrogen-induced cracking) yang kritis. Seluruh sambungan harus dibongkar dan diganti.
+            </p>
+            <div class="bg-red-900/20 p-4 rounded-lg border-l-4 border-red-500">
+                <p class="text-red-200 font-medium">💡 Pembelajaran:</p>
+                <p class="text-slate-300 text-sm mt-1">Elektroda low hydrogen sangat sensitif terhadap kelembapan. Air (H₂O) yang terserap ke dalam salutan akan terurai menjadi hidrogen saat pengelasan, yang kemudian terperangkap di logam las dan menyebabkan <strong>retak dingin</strong>. Prosedur penyimpanan dan baking elektroda bukan formalitas—melainkan nyawa dari kualitas lasan.</p>
+            </div>
+        </section>
+
+        <!-- Kesimpulan -->
+        <section class="bg-luxury-800/40 border border-luxury-gold/20 rounded-2xl p-8">
+            <h2 class="font-serif text-2xl font-bold text-white mb-4">Kesimpulan</h2>
+            <p class="text-slate-300 leading-relaxed">
+                Pemahaman tentang klasifikasi elektroda menurut standar AWS adalah kompetensi wajib bagi setiap juru las. Sistem penamaan EXXXX memberikan informasi lengkap tentang kekuatan tarik, posisi pengelasan, jenis salutan, dan arus yang sesuai. Pemilihan elektroda harus mempertimbangkan jenis material, tebal material, posisi pengelasan, dan kondisi kerja. Elektroda low hydrogen (E7018) wajib disimpan dalam oven untuk mencegah retak hidrogen. Juru las profesional selalu memilih elektroda berdasarkan WPS (Welding Procedure Specification), bukan berdasarkan kebiasaan.
+            </p>
+        </section>
+
+        <!-- Daftar Pustaka -->
+        <section class="border-t border-slate-700 pt-8">
+            <h3 class="font-serif text-xl font-bold text-white mb-4">📚 Daftar Pustaka</h3>
+            <ul class="text-sm text-slate-400 space-y-2 list-decimal pl-5">
+                <li>AWS A5.1, <em>Specification for Carbon Steel Electrodes for Shielded Metal Arc Welding</em>.</li>
+                <li>Balai Besar Latihan Kerja Industri Serang, <em>Filler Metal (Stick Electrode)</em>.</li>
+                <li>ESAB SMAW, <em>Welding Consumables (Asia)</em>.</li>
+                <li>ESAB SMAW, <em>Welder Guide Book (Asia)</em>.</li>
+                <li>Bachtiar, ST., MT, <em>Modul Ajar Praktek Las</em>, Politeknik Perkapalan Negeri Surabaya, 2012.</li>
+                <li>Carito, S.ST., <em>Modul Ajar Konsentrasi Keahlian Teknik Pengelasan Fase F</em>, SMK Negeri 1 Losarang, 2023.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- ======================================================================= -->
+    <!-- UJI FORMATIF 5 -->
+    <!-- ======================================================================= -->
+    <section id="uji-formatif" class="bg-luxury-800 border-t border-luxury-gold/20 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold font-semibold tracking-wider text-sm uppercase">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl font-bold text-white mt-2">📋 Uji Formatif 5: Klasifikasi & Pemilihan Elektroda</h2>
+                <p class="text-slate-400 mt-2">Lengkapi data diri dan jawablah seluruh pertanyaan di bawah ini dengan teliti.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-900/50 p-6 rounded-xl border border-luxury-gold/20">
+                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        Data Siswa
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Nama Lengkap <span class="text-red-400">*</span></label>
+                            <input type="text" id="nama" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">NIS <span class="text-red-400">*</span></label>
+                            <input type="text" id="nis" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors" placeholder="Nomor Induk Siswa">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Tanggal <span class="text-red-400">*</span></label>
+                            <input type="date" id="tanggal" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Kelas <span class="text-red-400">*</span></label>
+                            <select id="kelas" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors">
+                                <option value="">Pilih Kelas</option>
+                                <option value="X">X (Sepuluh)</option>
+                                <option value="XI">XI (Sebelas)</option>
+                                <option value="XII">XII (Dua Belas)</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Semester <span class="text-red-400">*</span></label>
+                            <select id="semester" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors">
+                                <option value="">Pilih Semester</option>
+                                <option value="Ganjil">Ganjil</option>
+                                <option value="Genap">Genap</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="space-y-6">
+                    <h3 class="text-white font-semibold text-lg border-b border-luxury-gold/20 pb-2">📝 Bagian A: Pilihan Ganda (Skor 10/soal)</h3>
+                    
+                    <!-- Soal 1 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">1. Berdasarkan standar AWS, huruf "E" pada kode elektroda (misal: E6013) menunjukkan...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Electrode (Elektroda)</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Efficiency (Efisiensi)</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Energy (Energi)</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Element (Unsur)</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">2. Dua angka pertama setelah huruf "E" pada kode elektroda menunjukkan...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Jenis salutan</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Kekuatan tarik (tensile strength) dalam ksi</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Posisi pengelasan</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Diameter elektroda</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">3. Jenis salutan yang paling umum digunakan untuk pemakaian di bidang konstruksi adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Cellulose</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Low hydrogen</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Rutile</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Iron powder</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">4. Elektroda low hydrogen (E7018) wajib digunakan untuk pengelasan...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Baja karbon rendah tipis</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Baja paduan tinggi dan struktur kritis</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Aluminium dan tembaga</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Pelat tipis di posisi datar</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 5 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">5. Jika kita akan melaksanakan pengelasan menggunakan elektroda berdiameter 2,6 mm, maka arus yang sesuai adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. 50 ampere</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. 65 ampere</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. 110 ampere</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. 150 ampere</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="e" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">e. 80 ampere</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 6 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">6. Untuk pembuatan jalur pertama (root pass) pada sambungan 3F dengan plat tebal 6 mm, elektroda yang paling tepat digunakan adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Ø 1,8 mm</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Ø 2,0 mm</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Ø 2,6 mm</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Ø 3,2 mm</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="e" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">e. Ø 4,0 mm</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 7 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">7. Penulisan kode elektroda yang SALAH menurut standar AWS adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. E6013</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. E7018</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. E6010</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. E6033</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 8 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">8. Digit ketiga pada kode elektroda (angka "1" atau "2") menunjukkan...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Jenis arus yang digunakan</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Kekuatan tarik minimum</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Posisi pengelasan</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Jenis salutan</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 9 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">9. Elektroda low hydrogen (E7018) yang sudah terbuka kemasannya wajib disimpan di...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Kulkas pendingin</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Oven elektroda (100-150°C)</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Kotak kayu tertutup</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Di bawah sinar matahari</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 10 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">10. Elektroda E6010 paling cocok digunakan untuk aplikasi...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Root pass pipa dengan penetrasi dalam</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Las plat tipis di posisi datar</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Pengelasan aluminium</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Fill pass pada pelat tebal</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="space-y-6">
+                    <h3 class="text-white font-semibold text-lg border-b border-luxury-gold/20 pb-2">✍️ Bagian B: Essay (Penilaian Awal Otomatis, Review Akhir oleh Guru)</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">1. Jelaskan secara lengkap sistem penamaan elektroda menurut standar AWS (EXXXX)! Berikan arti setiap karakter dan contoh penerapannya!</label>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">2. Bandingkan karakteristik elektroda E6013 dan E7018! Kapan masing-masing elektroda tersebut sebaiknya digunakan?</label>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">3. Jelaskan 4 jenis salutan (coating) elektroda SMAW beserta karakteristik dan aplikasinya masing-masing!</label>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">4. Mengapa elektroda low hydrogen (E7018) wajib disimpan dalam oven? Jelaskan dari sisi metalurgi dan risiko jika diabaikan!</label>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">5. Sebutkan dan jelaskan minimal 4 faktor yang harus dipertimbangkan dalam pemilihan elektroda untuk suatu pekerjaan pengelasan!</label>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-900/80 border border-luxury-gold/30 rounded-xl p-6 space-y-6">
+                    <div class="text-center">
+                        <h3 class="text-xl font-serif font-bold text-white mb-2">📊 Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-sm">
+                            <div class="bg-luxury-800 px-4 py-2 rounded-lg border border-slate-700">
+                                <span class="block text-slate-400">Pilihan Ganda</span>
+                                <span id="scorePG" class="text-2xl font-bold text-luxury-gold">0</span><span class="text-slate-400">/100</span>
+                            </div>
+                            <div class="bg-luxury-800 px-4 py-2 rounded-lg border border-slate-700">
+                                <span class="block text-slate-400">Essay (Simulasi)</span>
+                                <span id="scoreEssay" class="text-2xl font-bold text-luxury-gold">0</span><span class="text-slate-400">/100</span>
+                            </div>
+                            <div class="bg-luxury-800 px-4 py-2 rounded-lg border border-luxury-gold">
+                                <span class="block text-luxury-gold">Nilai Akhir</span>
+                                <span id="scoreTotal" class="text-3xl font-bold text-white">0</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3 italic">*Nilai Essay adalah penilaian awal berbasis kelengkapan jawaban. Penilaian final tetap dilakukan oleh Guru.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button type="button" onclick="hitungNilai()" class="col-span-2 md:col-span-4 bg-gradient-to-r from-luxury-gold to-luxury-accent text-luxury-900 font-bold py-3 rounded-lg hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all">
+                            ✉️ KIRIM JAWABAN & LIHAT HASIL
+                        </button>
+                        <button type="button" onclick="unduhPDF()" class="bg-luxury-800 border border-slate-600 text-slate-300 font-medium py-2 rounded-lg hover:border-luxury-gold hover:text-luxury-gold transition-all text-sm">
+                            📥 UNDUH PDF
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="bg-luxury-800 border border-slate-600 text-slate-300 font-medium py-2 rounded-lg hover:border-luxury-gold hover:text-luxury-gold transition-all text-sm">
+                            📊 UNDUH SKOR SAJA
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="bg-luxury-800 border border-slate-600 text-slate-300 font-medium py-2 rounded-lg hover:border-luxury-gold hover:text-luxury-gold transition-all text-sm">
+                            ✉️ KIRIM EMAIL GURU
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="bg-luxury-800 border border-slate-600 text-slate-300 font-medium py-2 rounded-lg hover:border-red-500 hover:text-red-400 transition-all text-sm">
+                            🔄 MULAI ULANG
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-900 border-t border-luxury-gold/20 py-8 no-print">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm mb-4">&copy; 2024 Ahmad Iqbal - SMK N1 Koto Balingka. Modul Teknik Pengelasan SMAW.</p>
+            <div class="flex justify-center gap-6 text-sm">
+                <a href="index.html" class="text-slate-400 hover:text-luxury-gold transition-colors">← Kembali ke Daftar Bab</a>
+                <a href="#top" class="text-slate-400 hover:text-luxury-gold transition-colors">↑ Ke Atas</a>
+                <a href="6.html" class="text-luxury-gold hover:text-luxury-goldLight transition-colors font-medium">Bab 6: Persiapan Material & Sambungan →</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Kunci Jawaban Pilihan Ganda (Pertemuan 5: Klasifikasi & Pemilihan Elektroda)
+        const kunciJawaban = {
+            q1: 'a', q2: 'b', q3: 'c', q4: 'b', q5: 'e',
+            q6: 'c', q7: 'd', q8: 'c', q9: 'b', q10: 'a'
+        };
+
+        function hitungNilai() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+            const semester = document.getElementById('semester').value;
+
+            if (!nama || !nis || !tanggal || !kelas || !semester) {
+                alert("⚠️ Mohon lengkapi semua data diri siswa terlebih dahulu!");
+                return;
+            }
+
+            let skorPG = 0;
+            let terjawab = 0;
+            for (let i = 1; i <= 10; i++) {
+                const jawaban = document.querySelector(`input[name="q${i}"]:checked`);
+                if (jawaban) {
+                    terjawab++;
+                    if (jawaban.value === kunciJawaban[`q${i}`]) {
+                        skorPG += 10;
+                    }
+                }
+            }
+
+            if (terjawab < 10) {
+                alert(`⚠️ Anda baru menjawab ${terjawab} dari 10 soal pilihan ganda. Mohon lengkapi semua soal!`);
+                return;
+            }
+
+            let skorEssay = 0;
+            let essayLengkap = 0;
+            for (let i = 1; i <= 5; i++) {
+                const teks = document.getElementById(`essay${i}`).value.trim();
+                const jumlahKata = teks.split(/\s+/).filter(word => word.length > 0).length;
+                if (jumlahKata >= 15) {
+                    essayLengkap++;
+                }
+            }
+            skorEssay = essayLengkap * 20;
+
+            const nilaiAkhir = Math.round((skorPG * 0.6) + (skorEssay * 0.4));
+
+            document.getElementById('scorePG').innerText = skorPG;
+            document.getElementById('scoreEssay').innerText = skorEssay + (skorEssay === 100 ? "" : " (Perlu Review Guru)");
+            document.getElementById('scoreTotal').innerText = nilaiAkhir;
+
+            document.getElementById('scoreTotal').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            alert(`✅ Penilaian Selesai!\nNilai Pilihan Ganda: ${skorPG}\nNilai Essay (Simulasi): ${skorEssay}\nNilai Akhir Tampilan: ${nilaiAkhir}\n\n(Catatan: Nilai Essay akan direview ulang oleh Guru Ahmad Iqbal)`);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value || "Siswa";
+            const nis = document.getElementById('nis').value || "-";
+            const total = document.getElementById('scoreTotal').innerText;
+            
+            if(total === "0") {
+                alert("Silakan klik 'KIRIM JAWABAN & LIHAT HASIL' terlebih dahulu untuk mendapatkan nilai.");
+                return;
+            }
+
+            const teksSkor = `HASIL UJI FORMATIF 5 (Klasifikasi & Pemilihan Elektroda)\nNama: ${nama}\nNIS: ${nis}\nNilai Akhir: ${total}\n\nDokumen ini digenerate secara otomatis dari Modul Teknik Pengelasan SMAW.`;
+            
+            const blob = new Blob([teksSkor], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif5_Elektroda_${nis}.txt`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('scoreTotal').innerText;
+
+            if (!nama || total === "0") {
+                alert("Mohon lengkapi data dan hitung nilai terlebih dahulu sebelum mengirim email.");
+                return;
+            }
+
+            const subject = `Hasil Uji Formatif 5 (Elektroda) - ${nama} (${nis}) - Kelas ${kelas}`;
+            const body = `Yth. Bapak Ahmad Iqbal,\n\nBerikut adalah hasil Uji Formatif 5 (Klasifikasi & Pemilihan Elektroda) saya:\n\nNama: ${nama}\nNIS: ${nis}\nKelas: ${kelas}\nNilai Pilihan Ganda: ${document.getElementById('scorePG').innerText}\nNilai Essay (Simulasi): ${document.getElementById('scoreEssay').innerText}\nNilai Akhir: ${total}\n\nMohon bimbingan dan review selanjutnya.\n\nTerima kasih.`;
+            
+            window.location.href = `mailto:ahmad2igbal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengosongkan semua jawaban dan memulai ulang?")) {
+                document.getElementById("quizForm").reset();
+                document.getElementById('scorePG').innerText = "0";
+                document.getElementById('scoreEssay').innerText = "0";
+                document.getElementById('scoreTotal').innerText = "0";
+                document.getElementById('tanggal').valueAsDate = new Date();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>

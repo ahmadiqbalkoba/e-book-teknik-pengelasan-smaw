@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 1: Pengantar Teknologi & Prinsip Dasar SMAW</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom Config for Luxury Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        luxury: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            accent: '#c5a028'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #c5a028 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.15);
+        }
+        /* Print Styles for PDF Download */
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: white !important; color: black !important; }
+            .print-border { border: 1px solid #000 !important; }
+            .text-slate-400, .text-slate-300 { color: #333 !important; }
+            .text-white { color: #000 !important; }
+            .bg-luxury-800\/40 { background-color: #f3f4f6 !important; }
+        }
+    </style>
+</head>
+<body class="bg-luxury-900 text-slate-200 font-sans antialiased selection:bg-luxury-gold selection:text-luxury-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-luxury-900/90 backdrop-blur-md border-b border-luxury-gold/20 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <svg class="w-6 h-6 text-luxury-gold group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <span class="font-serif text-lg font-semibold text-white">Kembali ke <span class="text-luxury-gold">Beranda</span></span>
+                </a>
+                <div class="flex gap-4">
+                    <a href="index.html#tentang" class="text-sm font-medium text-slate-300 hover:text-luxury-gold transition-colors">Penulis</a>
+                    <a href="2.html" class="text-sm font-medium text-luxury-gold hover:text-luxury-goldLight transition-colors flex items-center gap-1">
+                        Bab Selanjutnya <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 border-b border-luxury-gold/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-luxury-gold/10 border border-luxury-gold/30 text-luxury-gold text-sm font-semibold tracking-wider mb-4">PERTEMUAN 1</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+                Pengantar Teknologi & <br><span class="gold-gradient-text">Prinsip Dasar SMAW</span>
+            </h1>
+            <p class="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                Memahami sejarah, prinsip kerja, komponen utama pengelasan Shielded Metal Arc Welding (SMAW), serta standar Keselamatan dan Kesehatan Kerja (K3) dasar di bengkel las.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- Pendahuluan -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">01</span>
+                Pendahuluan
+            </h2>
+            <p class="text-slate-300 leading-relaxed text-justify">
+                Pengelasan (Welding) adalah pekerjaan penyambungan logam dengan menggunakan proses pemanasan setempat, sehingga terjadi ikatan metalurgis antara logam yang disambung. Dalam dunia fabrikasi logam, <strong>Shielded Metal Arc Welding (SMAW)</strong> atau Las Busur Manual merupakan proses pengelasan yang paling mendasar dan paling banyak digunakan. 
+            </p>
+            <p class="text-slate-300 leading-relaxed text-justify">
+                Pada proses ini, busur api listrik yang terjadi antara ujung elektroda dan logam induk menghasilkan energi panas yang mencairkan keduanya. Cairan logam ini kemudian membeku membentuk sambungan yang kuat. Pemahaman yang mendalam tentang prinsip dasar ini adalah fondasi wajib sebelum seorang siswa melangkah ke praktik pengelasan posisi 1F, 2F, hingga 3F.
+            </p>
+        </section>
+
+        <!-- Konsep Kunci -->
+        <section class="bg-luxury-800/40 border border-luxury-gold/20 rounded-2xl p-8 hover-lift">
+            <h2 class="font-serif text-2xl font-bold text-luxury-gold mb-6 flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+                🔑 Konsep Kunci
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <h3 class="text-white font-semibold">SMAW (Las Busur Manual)</h3>
+                    <p class="text-sm text-slate-400">Proses pengelasan yang menggunakan elektroda terbungkus fluks. Fluks akan terbakar menghasilkan gas pelindung dan terak (slag) untuk melindungi weld pool dari oksidasi udara.</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-white font-semibold">HAZ (Heat Affected Zone)</h3>
+                    <p class="text-sm text-slate-400">Daerah Terpengaruh Panas, yaitu area di sekitar lasan yang tidak mencair tetapi mengalami perubahan sifat mekanik dan struktur mikro akibat siklus panas pengelasan.</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-white font-semibold">Base Metal & Filler Metal</h3>
+                    <p class="text-sm text-slate-400"><em>Base metal</em> adalah logam induk yang akan disambung. <em>Filler metal</em> adalah logam pengisi yang berasal dari kawat elektroda yang mencair.</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-white font-semibold">Polaritas (DCEN & DCEP)</h3>
+                    <p class="text-sm text-slate-400">Arah aliran arus searah (DC). DCEP (Elektroda Positif) memberikan penetrasi dalam, sedangkan DCEN (Elektroda Negatif) memberikan laju pelelehan elektroda yang lebih cepat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Landasan Teoretis -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">02</span>
+                Prinsip Kerja & Parameter
+            </h2>
+            <div class="prose prose-invert max-w-none text-slate-300">
+                <p>Panas masukan (<em>heat input</em>) dalam pengelasan SMAW dapat dihitung dengan rumus dasar:</p>
+                <div class="bg-luxury-900 p-6 rounded-xl border border-luxury-gold/20 text-center font-mono text-xl text-luxury-gold my-4">
+                    H = (E × I × f) / V
+                </div>
+                <ul class="list-disc pl-5 space-y-2 text-slate-400">
+                    <li><strong class="text-slate-200">H:</strong> Panas masukan (Joule/mm)</li>
+                    <li><strong class="text-slate-200">E:</strong> Tegangan / Voltage (Volt)</li>
+                    <li><strong class="text-slate-200">I:</strong> Arus listrik (Ampere)</li>
+                    <li><strong class="text-slate-200">V:</strong> Kecepatan pengelasan (mm/detik)</li>
+                    <li><strong class="text-slate-200">f:</strong> Efisiensi perpindahan panas (0.8 - 1.0)</li>
+                </ul>
+                <p class="mt-4">Stabilitas busur las sangat ditentukan oleh <strong>panjang busur (arc length)</strong>. Panjang busur yang ideal umumnya tidak melebihi diameter inti kawat elektroda yang digunakan. Busur yang terlalu panjang akan menyebabkan percikan (spatter) berlebih, penetrasi dangkal, dan porositas.</p>
+            </div>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section class="bg-red-900/10 border border-red-500/20 rounded-2xl p-8">
+            <h2 class="font-serif text-xl font-bold text-red-400 mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                📖 Studi Kasus: Kegagalan Akibat Persiapan yang Buruk
+            </h2>
+            <p class="text-slate-300 leading-relaxed mb-4">
+                Seorang siswa praktik langsung mengelas pelat baja tanpa membersihkan permukaannya terlebih dahulu. Pelat tersebut masih tertutup lapisan karat tipis dan bekas cat minyak. Saat pengelasan, muncul suara mendesis yang tidak normal, percikan (spatter) yang sangat banyak, dan hasil lasan berpori-pori (porosity). Saat diketuk, terak las mudah lepas dan di bawahnya terdapat cacat inklusi slag.
+            </p>
+            <div class="bg-red-900/20 p-4 rounded-lg border-l-4 border-red-500">
+                <p class="text-red-200 font-medium">💡 Pembelajaran:</p>
+                <p class="text-slate-300 text-sm mt-1">Kebersihan material (bebas dari karat, cat, oli, dan kelembapan) adalah syarat mutlak sebelum pengelasan. Fluks pada elektroda tidak dirancang untuk membersihkan kotoran berat, melainkan hanya melindungi logam cair dari udara. Mengabaikan persiapan material = menjamin kegagalan las.</p>
+            </div>
+        </section>
+
+        <!-- Komponen & K3 -->
+        <section class="space-y-6">
+            <h2 class="font-serif text-2xl font-bold text-white flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-luxury-gold/20 text-luxury-gold flex items-center justify-center text-sm">03</span>
+                Komponen Utama & K3
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-luxury-gold font-semibold text-lg border-b border-luxury-gold/20 pb-2">Rangkaian Las SMAW</h3>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex gap-3"><span class="text-luxury-gold">▹</span> <span><strong>Power Source:</strong> Mesin las (Trafo AC atau Inverter DC) sebagai pembangkit arus.</span></li>
+                        <li class="flex gap-3"><span class="text-luxury-gold">▹</span> <span><strong>Kabel Elektroda:</strong> Menghubungkan mesin ke holder (pemegang elektroda).</span></li>
+                        <li class="flex gap-3"><span class="text-luxury-gold">▹</span> <span><strong>Kabel Massa:</strong> Menghubungkan mesin ke benda kerja untuk menyempurnakan sirkuit.</span></li>
+                        <li class="flex gap-3"><span class="text-luxury-gold">▹</span> <span><strong>Elektroda:</strong> Kawat las berinti logam yang dilapisi fluks.</span></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-luxury-gold font-semibold text-lg border-b border-luxury-gold/20 pb-2">Wajib K3 (APD)</h3>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex gap-3"><span class="text-luxury-gold">▹</span> <span><strong>Masker Las (Helmet):</strong> Dengan kaca filter (shade 10-13) untuk melindungi mata dari sinar UV/IR.</span></li>
+                        <li class="flex gap-3"><span class="text-luxury-gold">▹</span> <span><strong>Sarung Tangan Kulit:</strong> Panjang hingga lengan bawah, tahan panas dan percikan.</span></li>
+                        <li class="flex gap-3"><span class="text-luxury-gold">▹</span> <span><strong>Wearpack / Apron:</strong> Terbuat dari bahan katun tebal atau kulit, bukan bahan sintetis yang mudah meleleh.</span></li>
+                        <li class="flex gap-3"><span class="text-luxury-gold">▹</span> <span><strong>Sepatu Safety:</strong> Ujung besi, sol karet tebal, untuk menghindari tertimpa benda atau tersengat listrik.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kesimpulan -->
+        <section class="bg-luxury-800/40 border border-luxury-gold/20 rounded-2xl p-8">
+            <h2 class="font-serif text-2xl font-bold text-white mb-4">Kesimpulan</h2>
+            <p class="text-slate-300 leading-relaxed">
+                Penguasaan prinsip dasar SMAW, pemahaman parameter pengelasan (arus, tegangan, kecepatan), dan kepatuhan terhadap prosedur K3 adalah pondasi utama sebelum melakukan praktik pengelasan posisi apapun. Sebuah lasan yang berkualitas tidak hanya bergantung pada keterampilan tangan, tetapi juga pada persiapan material, pemilihan elektroda yang tepat, dan pengaturan mesin yang sesuai dengan Spesifikasi Prosedur Pengelasan (WPS).
+            </p>
+        </section>
+
+        <!-- Daftar Pustaka -->
+        <section class="border-t border-slate-700 pt-8">
+            <h3 class="font-serif text-xl font-bold text-white mb-4">📚 Daftar Pustaka</h3>
+            <ul class="text-sm text-slate-400 space-y-2 list-decimal pl-5">
+                <li>ANSI Z49.1:2012, <em>Safety in Welding, Cutting, and Allied Processes</em>.</li>
+                <li>Balai Besar Latihan Kerja Industri Serang, <em>Las Listrik Busur Terlindung (Shielded Metal Arc Welding) SMAW</em>.</li>
+                <li>Modul Ajar Konsentrasi Keahlian Teknik Pengelasan Fase F, SMK Negeri 1 Losarang (Diadaptasi).</li>
+                <li>Riswan Dwi Djamiko, MPD, <em>Modul Teori Pengelasan Logam</em>, UNY, 2008.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- ======================================================================= -->
+    <!-- UJI FORMATIF 1 -->
+    <!-- ======================================================================= -->
+    <section id="uji-formatif" class="bg-luxury-800 border-t border-luxury-gold/20 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-luxury-gold font-semibold tracking-wider text-sm uppercase">Evaluasi Pembelajaran</span>
+                <h2 class="font-serif text-3xl font-bold text-white mt-2">📋 Uji Formatif 1: Prinsip Dasar SMAW</h2>
+                <p class="text-slate-400 mt-2">Lengkapi data diri dan jawablah seluruh pertanyaan di bawah ini dengan teliti.</p>
+            </div>
+
+            <form id="quizForm" class="space-y-8">
+                <!-- Data Siswa -->
+                <div class="bg-luxury-900/50 p-6 rounded-xl border border-luxury-gold/20">
+                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        Data Siswa
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Nama Lengkap <span class="text-red-400">*</span></label>
+                            <input type="text" id="nama" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">NIS <span class="text-red-400">*</span></label>
+                            <input type="text" id="nis" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors" placeholder="Nomor Induk Siswa">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Tanggal <span class="text-red-400">*</span></label>
+                            <input type="date" id="tanggal" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Kelas <span class="text-red-400">*</span></label>
+                            <select id="kelas" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors">
+                                <option value="">Pilih Kelas</option>
+                                <option value="X">X (Sepuluh)</option>
+                                <option value="XI">XI (Sebelas)</option>
+                                <option value="XII">XII (Dua Belas)</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Semester <span class="text-red-400">*</span></label>
+                            <select id="semester" required class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold outline-none transition-colors">
+                                <option value="">Pilih Semester</option>
+                                <option value="Ganjil">Ganjil</option>
+                                <option value="Genap">Genap</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian A: Pilihan Ganda -->
+                <div class="space-y-6">
+                    <h3 class="text-white font-semibold text-lg border-b border-luxury-gold/20 pb-2">📝 Bagian A: Pilihan Ganda (Skor 10/soal)</h3>
+                    
+                    <!-- Soal 1 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">1. Istilah lain untuk las busur metal manual adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q1" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. SMAW</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q1" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. GMAW</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q1" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. GTAW</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q1" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. OAW</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">2. Fungsi utama lapisan fluks pada elektroda SMAW adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q2" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Melindungi weld pool dari oksidasi udara</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q2" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Membuat lasan menjadi lebih keras</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q2" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Mengganti fungsi kabel massa</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q2" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Menambah berat elektroda</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">3. Alat Pelindung Diri (APD) yang wajib digunakan untuk melindungi tangan dari panas dan percikan las adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q3" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Sarung tangan kain</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q3" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Sarung tangan karet</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q3" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Sarung tangan kulit</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q3" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Tidak perlu sarung tangan</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">4. Permukaan material yang akan dilas harus dibersihkan dari kotoran berupa...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q4" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Debu ringan saja</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q4" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Air bersih</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q4" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Tinta spidol</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q4" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Karat, cat, dan oli/gemuk</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 5 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">5. Komponen mesin las yang berfungsi sebagai pembangkit arus listrik disebut...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Power source</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Ground clamp</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Electrode holder</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q5" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Chipping hammer</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 6 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">6. Daerah di sekitar bidang las yang mengalami perubahan sifat mekanik akibat panas disebut...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Weld Metal</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Heat Affected Zone (HAZ)</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Base Metal</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q6" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Root Face</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 7 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">7. Jenis arus yang umum digunakan pada mesin las inverter modern untuk pengelasan SMAW adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q7" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. AC dan DC</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q7" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Hanya AC</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q7" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Arus statis</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q7" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Arus induksi</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 8 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">8. Fungsi dari kabel massa dalam rangkaian pengelasan adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q8" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Menahan elektroda agar tidak panas</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q8" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Menghubungkan benda kerja ke mesin untuk menyempurnakan sirkuit</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q8" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Mengukur tegangan listrik</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q8" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Membersihkan terak las</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 9 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">9. Panjang busur (arc length) yang ideal saat pengelasan SMAW adalah...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q9" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Tidak melebihi diameter inti kawat elektroda</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q9" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Sebanyak mungkin agar panas merata</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q9" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Minimal 10 mm</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q9" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Menempel langsung pada benda kerja</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 10 -->
+                    <div class="bg-luxury-900/30 p-5 rounded-lg border border-slate-700">
+                        <p class="text-slate-200 font-medium mb-3">10. Posisi pengelasan 1F merujuk pada posisi...</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q10" value="a" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">a. Datar (Flat Position)</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q10" value="b" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">b. Horizontal</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q10" value="c" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">c. Vertikal</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer group"><input type="radio" name="q10" value="d" class="accent-luxury-gold"> <span class="text-slate-300 group-hover:text-white transition-colors">d. Di atas kepala (Overhead)</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian B: Essay -->
+                <div class="space-y-6">
+                    <h3 class="text-white font-semibold text-lg border-b border-luxury-gold/20 pb-2">✍️ Bagian B: Essay (Penilaian Awal Otomatis, Review Akhir oleh Guru)</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">1. Jelaskan secara singkat prinsip kerja dasar pengelasan SMAW!</label>
+                            <textarea id="essay1" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">2. Sebutkan dan jelaskan 3 komponen utama dalam rangkaian las SMAW!</label>
+                            <textarea id="essay2" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">3. Mengapa permukaan material yang akan dilas harus dibersihkan dari karat, cat, atau oli?</label>
+                            <textarea id="essay3" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">4. Jelaskan apa yang dimaksud dengan HAZ (Heat Affected Zone)!</label>
+                            <textarea id="essay4" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-slate-200 font-medium mb-2">5. Sebutkan minimal 4 Alat Pelindung Diri (APD) yang wajib digunakan saat praktik pengelasan SMAW!</label>
+                            <textarea id="essay5" rows="3" class="w-full bg-luxury-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:border-luxury-gold outline-none transition-colors" placeholder="Jawaban Anda..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hasil & Tombol Aksi -->
+                <div class="bg-luxury-900/80 border border-luxury-gold/30 rounded-xl p-6 space-y-6">
+                    <div class="text-center">
+                        <h3 class="text-xl font-serif font-bold text-white mb-2">📊 Hasil Uji Formatif</h3>
+                        <div class="flex justify-center gap-8 text-sm">
+                            <div class="bg-luxury-800 px-4 py-2 rounded-lg border border-slate-700">
+                                <span class="block text-slate-400">Pilihan Ganda</span>
+                                <span id="scorePG" class="text-2xl font-bold text-luxury-gold">0</span><span class="text-slate-400">/100</span>
+                            </div>
+                            <div class="bg-luxury-800 px-4 py-2 rounded-lg border border-slate-700">
+                                <span class="block text-slate-400">Essay (Simulasi)</span>
+                                <span id="scoreEssay" class="text-2xl font-bold text-luxury-gold">0</span><span class="text-slate-400">/100</span>
+                            </div>
+                            <div class="bg-luxury-800 px-4 py-2 rounded-lg border border-luxury-gold">
+                                <span class="block text-luxury-gold">Nilai Akhir</span>
+                                <span id="scoreTotal" class="text-3xl font-bold text-white">0</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3 italic">*Nilai Essay adalah penilaian awal berbasis kelengkapan jawaban. Penilaian final tetap dilakukan oleh Guru.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button type="button" onclick="hitungNilai()" class="col-span-2 md:col-span-4 bg-gradient-to-r from-luxury-gold to-luxury-accent text-luxury-900 font-bold py-3 rounded-lg hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all">
+                            ✉️ KIRIM JAWABAN & LIHAT HASIL
+                        </button>
+                        <button type="button" onclick="unduhPDF()" class="bg-luxury-800 border border-slate-600 text-slate-300 font-medium py-2 rounded-lg hover:border-luxury-gold hover:text-luxury-gold transition-all text-sm">
+                            📥 UNDUH PDF
+                        </button>
+                        <button type="button" onclick="unduhSkor()" class="bg-luxury-800 border border-slate-600 text-slate-300 font-medium py-2 rounded-lg hover:border-luxury-gold hover:text-luxury-gold transition-all text-sm">
+                            📊 UNDUH SKOR SAJA
+                        </button>
+                        <button type="button" onclick="kirimEmail()" class="bg-luxury-800 border border-slate-600 text-slate-300 font-medium py-2 rounded-lg hover:border-luxury-gold hover:text-luxury-gold transition-all text-sm">
+                            ✉️ KIRIM EMAIL GURU
+                        </button>
+                        <button type="button" onclick="mulaiUlang()" class="bg-luxury-800 border border-slate-600 text-slate-300 font-medium py-2 rounded-lg hover:border-red-500 hover:text-red-400 transition-all text-sm">
+                            🔄 MULAI ULANG
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-luxury-900 border-t border-luxury-gold/20 py-8 no-print">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm mb-4">&copy; 2024 Ahmad Iqbal - SMK N1 Koto Balingka. Modul Teknik Pengelasan SMAW.</p>
+            <div class="flex justify-center gap-6 text-sm">
+                <a href="index.html" class="text-slate-400 hover:text-luxury-gold transition-colors">← Kembali ke Daftar Bab</a>
+                <a href="#top" class="text-slate-400 hover:text-luxury-gold transition-colors">↑ Ke Atas</a>
+                <a href="2.html" class="text-luxury-gold hover:text-luxury-goldLight transition-colors font-medium">Bab 2: Material & Elektroda →</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Kunci Jawaban Pilihan Ganda
+        const kunciJawaban = {
+            q1: 'a', q2: 'a', q3: 'c', q4: 'd', q5: 'a',
+            q6: 'b', q7: 'a', q8: 'b', q9: 'a', q10: 'a'
+        };
+
+        function hitungNilai() {
+            // Validasi Data Diri
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+            const semester = document.getElementById('semester').value;
+
+            if (!nama || !nis || !tanggal || !kelas || !semester) {
+                alert("⚠️ Mohon lengkapi semua data diri siswa terlebih dahulu!");
+                return;
+            }
+
+            // Hitung Pilihan Ganda
+            let skorPG = 0;
+            let terjawab = 0;
+            for (let i = 1; i <= 10; i++) {
+                const jawaban = document.querySelector(`input[name="q${i}"]:checked`);
+                if (jawaban) {
+                    terjawab++;
+                    if (jawaban.value === kunciJawaban[`q${i}`]) {
+                        skorPG += 10;
+                    }
+                }
+            }
+
+            if (terjawab < 10) {
+                alert(`⚠️ Anda baru menjawab ${terjawab} dari 10 soal pilihan ganda. Mohon lengkapi semua soal!`);
+                return;
+            }
+
+            // Hitung Essay (Simulasi berbasis kelengkapan kata, minimal 15 kata per jawaban untuk dapat poin)
+            let skorEssay = 0;
+            let essayLengkap = 0;
+            for (let i = 1; i <= 5; i++) {
+                const teks = document.getElementById(`essay${i}`).value.trim();
+                const jumlahKata = teks.split(/\s+/).filter(word => word.length > 0).length;
+                if (jumlahKata >= 15) {
+                    essayLengkap++;
+                }
+            }
+            // Setiap jawaban essay yang "lengkap" (>=15 kata) diberi 20 poin (Total 100)
+            skorEssay = essayLengkap * 20;
+
+            // Hitung Total (Bobot: PG 60%, Essay 40% untuk nilai akhir tampilan, atau rata-rata sederhana)
+            // Di sini kita pakai rata-rata sederhana agar mudah dipahami siswa
+            const nilaiAkhir = Math.round((skorPG * 0.6) + (skorEssay * 0.4));
+
+            // Tampilkan Hasil
+            document.getElementById('scorePG').innerText = skorPG;
+            document.getElementById('scoreEssay').innerText = skorEssay + (skorEssay === 100 ? "" : " (Perlu Review Guru)");
+            document.getElementById('scoreTotal').innerText = nilaiAkhir;
+
+            // Scroll ke hasil
+            document.getElementById('scoreTotal').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            alert(`✅ Penilaian Selesai!\nNilai Pilihan Ganda: ${skorPG}\nNilai Essay (Simulasi): ${skorEssay}\nNilai Akhir Tampilan: ${nilaiAkhir}\n\n(Catatan: Nilai Essay akan direview ulang oleh Guru Ahmad Iqbal)`);
+        }
+
+        function unduhPDF() {
+            window.print();
+        }
+
+        function unduhSkor() {
+            const nama = document.getElementById('nama').value || "Siswa";
+            const nis = document.getElementById('nis').value || "-";
+            const total = document.getElementById('scoreTotal').innerText;
+            
+            if(total === "0") {
+                alert("Silakan klik 'KIRIM JAWABAN & LIHAT HASIL' terlebih dahulu untuk mendapatkan nilai.");
+                return;
+            }
+
+            const teksSkor = `HASIL UJI FORMATIF 1\nNama: ${nama}\nNIS: ${nis}\nNilai Akhir: ${total}\n\nDokumen ini digenerate secara otomatis dari Modul Teknik Pengelasan SMAW.`;
+            
+            // Membuat blob untuk diunduh sebagai file .txt (simulasi unduh skor ringan)
+            const blob = new Blob([teksSkor], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Skor_UjiFormatif1_${nis}.txt`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function kirimEmail() {
+            const nama = document.getElementById('nama').value;
+            const nis = document.getElementById('nis').value;
+            const kelas = document.getElementById('kelas').value;
+            const total = document.getElementById('scoreTotal').innerText;
+
+            if (!nama || total === "0") {
+                alert("Mohon lengkapi data dan hitung nilai terlebih dahulu sebelum mengirim email.");
+                return;
+            }
+
+            const subject = `Hasil Uji Formatif 1 - ${nama} (${nis}) - Kelas ${kelas}`;
+            const body = `Yth. Bapak Ahmad Iqbal,\n\nBerikut adalah hasil Uji Formatif 1 (Prinsip Dasar SMAW) saya:\n\nNama: ${nama}\nNIS: ${nis}\nKelas: ${kelas}\nNilai Pilihan Ganda: ${document.getElementById('scorePG').innerText}\nNilai Essay (Simulasi): ${document.getElementById('scoreEssay').innerText}\nNilai Akhir: ${total}\n\nMohon bimbingan dan review selanjutnya.\n\nTerima kasih.`;
+            
+            window.location.href = `mailto:ahmad2igbal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        function mulaiUlang() {
+            if(confirm("Apakah Anda yakin ingin mengosongkan semua jawaban dan memulai ulang?")) {
+                document.getElementById("quizForm").reset();
+                document.getElementById('scorePG').innerText = "0";
+                document.getElementById('scoreEssay').innerText = "0";
+                document.getElementById('scoreTotal').innerText = "0";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Set tanggal hari ini secara otomatis
+        document.getElementById('tanggal').valueAsDate = new Date();
+    </script>
+</body>
+</html>
